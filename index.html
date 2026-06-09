@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hub Tributário | IRPF Geral + Locação 2025/2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Hub Fiscal e Tributário</h1>
+        <p>IRPF Geral (PF) + Locação Residencial | Reforma Tributária 2025/2026</p>
+        <div class="badge-reforma">Base legal: Lei 15.191/2025, LC 214/2025 e tabela IRPF 2025/2026</div>
+    </div>
+
+    <div class="calculator-grid">
+        <div class="card">
+            <h2>Locação / Aluguéis</h2>
+            <p style="font-size:0.75rem;">IRPF progressivo + IBS/CBS (2026/2027) + Penalidades</p>
+            <div class="input-group">
+                <label>Renda Anual de Aluguéis (R$)</label>
+                <input type="number" id="annualRent" value="300000" step="1000">
+            </div>
+            <div class="input-group">
+                <label>Nº de imóveis alugados</label>
+                <input type="number" id="numProperties" value="4" min="0">
+            </div>
+            <div class="result-box">
+                <span>IRPF mensal (Carnê-Leão):</span>
+                <div class="result-value" id="monthlyIrpfLoc">R$ 0,00</div>
+                <span>IRPF anual locação:</span>
+                <div class="result-value" id="annualIrpfLoc">R$ 0,00</div>
+                <span>IBS/CBS anual (se aplicável):</span>
+                <div class="result-value" id="ibsValueLoc">R$ 0,00</div>
+                <div class="small-note" id="ibsStatusLoc">Verificando enquadramento</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>IRPF Geral · Pessoa Física</h2>
+            <p style="font-size:0.75rem;">Rendimentos de trabalho, autônomos, etc. Tabela 2025 e projeção 2026</p>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Ano de referência</label>
+                    <select id="irpfYear">
+                        <option value="2025">2025 (tabela oficial)</option>
+                        <option value="2026">2026 (nova isenção até R$5k/mês)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Tipo de cálculo</label>
+                    <select id="calcType">
+                        <option value="monthly">Mensal (renda mensal)</option>
+                        <option value="annual">Anual (renda bruta anual)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label id="incomeLabel">Renda bruta mensal (R$)</label>
+                <input type="number" id="grossIncome" value="5500" step="100">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Nº de dependentes (IR)</label>
+                    <input type="number" id="dependents" value="0" step="1" min="0">
+                </div>
+                <div class="input-group">
+                    <label>Outros descontos (R$ - INSS/pensão/etc)</label>
+                    <input type="number" id="otherDeductions" value="0" step="50">
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Meses no ano (para projeção anual)</label>
+                <input type="number" id="monthsYear" value="12" step="1" min="1" max="12">
+            </div>
+            <div class="result-box">
+                <div><strong>Base de cálculo (tributável):</strong> <span id="taxableBase" class="result-value" style="font-size:1rem;">R$ 0,00</span></div>
+                <div><strong>Faixa da tabela:</strong> <span id="taxBracket">—</span></div>
+                <div><strong>Alíquota efetiva:</strong> <span id="effectiveRate">0%</span></div>
+                <div><strong>Parcela a deduzir:</strong> <span id="deductionAmount">R$ 0,00</span></div>
+                <hr>
+                <div><strong>Imposto mensal devido:</strong> <span id="monthlyTaxDue" class="result-value" style="font-size:1.2rem;">R$ 0,00</span></div>
+                <div><strong>Imposto anual estimado:</strong> <span id="annualTaxDue">R$ 0,00</span></div>
+                <div><strong>Status:</strong> <span id="taxStatus" class="status-badge">Isento</span></div>
+                <div class="small-note" id="calcNote">Valores estimativos. Dependentes: dedução padrão R$ 189,59/mês cada (R$ 2.275,08/ano). Descontos obrigatórios abatem da base.</div>
+            </div>
+            <div class="small-note">Para 2026: isenção ampliada até R$ 5.000/mês (renda bruta mensal) e alíquota reduzida progressiva na faixa de R$ 5.000,01 a R$ 7.350,00, conforme proposta em tramitação - simulada com redução linear de 27,5% até isenção.</div>
+        </div>
+
+        <div class="card">
+            <h2>Penalidades (Lei 9.430/96)</h2>
+            <div class="input-group">
+                <label>Valor omitido Locador (R$)</label>
+                <input type="number" id="landlordOmission" value="50000">
+            </div>
+            <div class="checkbox-row">
+                <input type="checkbox" id="aggravatedPenalty">
+                <label for="aggravatedPenalty">Caso agravado (150%)</label>
+            </div>
+            <div class="input-group">
+                <label>Valor omitido Locatário (R$)</label>
+                <input type="number" id="tenantOmission" value="20000">
+            </div>
+            <div class="input-group">
+                <label>Transações incorretas Imobiliária (R$)</label>
+                <input type="number" id="agencyMisdeclared" value="100000">
+            </div>
+            <div class="result-box">
+                <span>Multa Locador:</span>
+                <div class="result-value" id="landlordFineDisplay">R$ 0,00</div>
+                <span>Multa Locatário (20%):</span>
+                <div class="result-value" id="tenantFineDisplay">R$ 0,00</div>
+                <span>Multa Imobiliária (3%):</span>
+                <div class="result-value" id="agencyFineDisplay">R$ 0,00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="formulas-section">
+        <h2>Fórmulas e bases legais (IRPF geral + Locação)</h2>
+        <div class="formula-card">
+            <strong>IRPF Geral - Tabela mensal 2025 (Lei 15.191/2025):</strong><br>
+            Até R$ 2.428,80 → alíquota 0%<br>
+            R$ 2.428,81 a R$ 2.826,65 → 7,5% - dedução R$ 182,16<br>
+            R$ 2.826,66 a R$ 3.751,05 → 15% - dedução R$ 394,16<br>
+            R$ 3.751,06 a R$ 4.664,68 → 22,5% - dedução R$ 675,49<br>
+            Acima de R$ 4.664,68 → 27,5% - dedução R$ 908,73<br>
+            <strong>Dedução por dependente mensal:</strong> R$ 189,59.<br>
+            <strong>Base tributável mensal</strong> = Renda bruta mensal - (dependentes * 189,59) - outros descontos.<br>
+            Imposto = (Base * alíquota_faixa) - dedução_faixa. Se negativo → 0.<br>
+            Anual = imposto mensal × meses_ano.
+        </div>
+        <div class="formula-card">
+            <strong>Regra especial para 2026 (isenção até R$5.000/mês):</strong><br>
+            Para rendimentos a partir de 2026, a faixa de isenção mensal passa a ser de até R$ 5.000,00. Entre R$ 5.000,01 e R$ 7.350,00 a alíquota efetiva é reduzida progressivamente (ex: simulação linear decrescente da alíquota máxima até zero). O cálculo usa a base tributável após deduções e aplica uma redução sobre o imposto da tabela tradicional, limitando a alíquota efetiva.<br>
+            Na prática: se renda bruta ≤ 5000 → isento. Se renda entre 5000 e 7350 → imposto = imposto_tabela × fator, onde fator = (renda − 5000) ÷ (7350 − 5000), resultando em alíquota efetiva progressiva de 0% até 27,5% (simplificação didática). Valores meramente ilustrativos até regulamentação final.
+        </div>
+        <div class="formula-card">
+            <strong>IBS/CBS sobre aluguéis (LC 214/2025):</strong><br>
+            Incidência se (Receita anual > R$ 240.000 E imóveis > 3) OU receita anual > R$ 288.000. Alíquota de referência 12% a 26,5%.
+        </div>
+        <div class="formula-card">
+            <strong>Multas (Locação):</strong> Locador: 75% (150% agravado) sobre valores omitidos. Locatário: até 20%. Imobiliária: 3% sobre transações incorretas (DIMOB).
+        </div>
+        <div class="small-note">Os cálculos são estimativas para planejamento, não substituem contador ou declaração oficial.</div>
+    </div>
+
+    <div class="footer">
+        Gestão Tributária | IRPF 2025 (Lei 15.191) e Reforma 2026 | | Base legal: Lei 15.191/2025, LC 214/2025, Lei 9.430/96 | Simulações para planejamento fiscal, não substituem declaração oficial.
+        Desenvolvido por [https://www.linkedin.com/in/luis-aguiar-378b64164/] 
+    </div>
+</div>
+
+<script src="calculadora.js"></script>
+</body>
+</html>

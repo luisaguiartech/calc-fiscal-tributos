@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f4f8;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    padding: 2rem 1rem;
+    color: #1a2c3e;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1E3A5F, #2B5B8B);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.header p {
+    color: #2c5a7a;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.badge-reforma {
+    background: #e9ecef;
+    padding: 0.3rem 1rem;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-weight: 500;
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.card {
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    padding: 1.5rem;
+    transition: all 0.2s;
+    border: 1px solid #e2edf2;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-left: 5px solid #2B5B8B;
+    padding-left: 1rem;
+    color: #0f2e44;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.input-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #2c5f8a;
+}
+
+input, select {
+    padding: 0.7rem 1rem;
+    border-radius: 16px;
+    border: 1.5px solid #dce7ef;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    background: #fefefe;
+    font-family: monospace;
+    font-weight: 500;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2B5B8B;
+    box-shadow: 0 0 0 3px rgba(43, 91, 139, 0.2);
+}
+
+input.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+.result-box {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-left: 4px solid #2B5B8B;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f3b5c;
+    word-break: break-word;
+}
+
+.small-note {
+    font-size: 0.7rem;
+    color: #5e7e9c;
+    margin-top: 0.5rem;
+}
+
+hr {
+    margin: 1rem 0;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, #cbdde6, transparent);
+}
+
+.formulas-section {
+    background: white;
+    border-radius: 32px;
+    padding: 1.8rem;
+    margin-top: 1rem;
+    border: 1px solid #e0ecf3;
+}
+
+.formula-card {
+    background: #f9fbfd;
+    border-radius: 24px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    border: 1px solid #dee9f0;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: #5c7f9c;
+    border-top: 1px solid #cde0ea;
+    padding-top: 1.5rem;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.status-isento { background: #d4edda; color: #155724; }
+.status-parcial { background: #fff3cd; color: #856404; }
+.status-tributado { background: #f8d7da; color: #721c24; }
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox-row label {
+    margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+    .card { padding: 1.2rem; }
+}
