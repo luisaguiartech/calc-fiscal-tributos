@@ -1,7 +1,4 @@
-﻿# calc-fiscal-tributos
-# Verify README content in commit in .
-$ git show HEAD:README.md
-# Calc Fiscal Tributos
+﻿# Calc Fiscal Tributos
 
 Hub tributário para cálculo de **IRPF 2025/2026** (Pessoa Física) e **Locação Residencial** com IBS/CBS e multas.
 
